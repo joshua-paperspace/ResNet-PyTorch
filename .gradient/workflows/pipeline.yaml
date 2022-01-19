@@ -43,6 +43,10 @@ jobs:
         ls
         echo hi
         ls /
+        echo hi
+        ls /inputs/
+        echo hi
+        ls /inputs/resnet
         cd /inputs/resnet
         ls
         python train_model.py -l 18
