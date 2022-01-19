@@ -21,7 +21,7 @@ testset = torchvision.datasets.CIFAR10(root=config.data_dir, train=False,
 
 test_val_split = 0.8
 
-testset, valset = random_split(testset,[len(testset)*test_val_split,len(testset)*(1-test_val_split)])
+testset, valset = random_split(testset,[int(len(testset)*test_val_split),int(len(testset)*(1-test_val_split))])
 
 testloader = torch.utils.data.DataLoader(testset, batch_size=batch_size,
                                          shuffle=False, num_workers=2)
