@@ -9,21 +9,21 @@ from load_data import trainloader, testloader, valloader
 
 def main(argv):
     try:
-        opts, args = getopt.getopt(argv,"le",["layers=", "epochs="])
+        opts, args = getopt.getopt(argv,"le:",["layers=", "epochs="])
     except:
         model=resnet34(3, 10)
         model_dir='models/'
         model_name='resnet34'
         epochs=1
     for opt, arg in opts:
-        if opt == 'l':
+        if opt == '-l':
             if arg == '18':
                 model = resnet18(3, 10)
             elif arg == '34':
                 model = resnet34(3, 10)
             else:
                 model = resnet34(3, 10)
-        if opt == 'e':
+        if opt == '-e':
             epochs = int(arg)
 
 
