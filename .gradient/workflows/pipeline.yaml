@@ -37,6 +37,7 @@ jobs:
       instance-type: P4000
   TrainResNet34:
     uses: script@v1
+    with:
       script: |-
         ls
         cd /inputs/resnet
