@@ -135,3 +135,6 @@ class ResNet(nn.Module):
 
 def resnet34(in_channels, n_classes):
     return ResNet(in_channels, n_classes, block=ResNetBasicBlock, layer_sizes=[3, 4, 6, 3])
+
+def resnet18(in_channels, n_classes):
+    return ResNet(in_channels, n_classes, block=ResNetBasicBlock, layer_sizes=[2, 2, 2, 2])
