@@ -43,7 +43,7 @@ jobs:
         cd /inputs/resnet
 #        pip install -U pip
 #        pip install -r requirements.txt
-        python train_model.py -l 18
+        python train_model.py -l "18"
     needs:
       - S3DataLoad
     inputs:
