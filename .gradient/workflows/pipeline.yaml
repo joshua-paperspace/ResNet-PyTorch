@@ -55,6 +55,7 @@ jobs:
         echo hi
         python train_model.py -l 18
     needs:
+      - CloneRepo
       - S3DataLoad
     inputs:
       repo: CloneRepo.outputs.repo
