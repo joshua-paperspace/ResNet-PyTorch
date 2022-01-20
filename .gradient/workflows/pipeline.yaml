@@ -69,7 +69,7 @@ jobs:
       - TrainResNet34
     inputs:
       repo: CloneRepo.outputs.repo
-      path: /inputs/path
+      path: job-1.outputs.path
     resources:
       instance-type: A100
 context:
