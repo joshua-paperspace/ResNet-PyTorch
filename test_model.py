@@ -58,11 +58,11 @@ def main(argv):
     # f = open(myfile)
 
     filename = PATH[15:-3]
-    file = open('./test_results/' + filename + '.txt','w+')
+    file = open('test_results/' + filename + '.txt','w+')
     file.write('Accuracy of the network on the 10000 test images: %d %%' % (
         100 * correct / total))
     file.close()
-    
+
     print('Accuracy of the network on the 10000 test images: %d %%' % (
         100 * correct / total))
 
