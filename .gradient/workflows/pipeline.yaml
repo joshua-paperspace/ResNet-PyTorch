@@ -67,7 +67,7 @@ jobs:
       path: TrainResNet18.outputs.path
     outputs:
       testdir: 
-        type: str
+        type: string
     resources:
       instance-type: A100
   CompareModels:
