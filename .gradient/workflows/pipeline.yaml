@@ -59,6 +59,9 @@ jobs:
         python test_model.py -m $(cat /inputs/path)
         ls
         echo after
+        cat test_results/resnet18-epochs-1.txt
+        echo end
+        echo end
     needs:
       - CloneRepo
       - TrainResNet18

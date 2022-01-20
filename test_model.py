@@ -57,7 +57,8 @@ def main(argv):
     # myfile.touch(exist_ok=True)
     # f = open(myfile)
 
-    filename = PATH[15:-3]
+    filename = PATH[7:-4]
+    print("filename: " + filename)
     file = open('test_results/' + filename + '.txt','w+')
     file.write('Accuracy of the network on the 10000 test images: %d %%' % (
         100 * correct / total))
