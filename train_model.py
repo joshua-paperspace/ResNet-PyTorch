@@ -8,13 +8,14 @@ from resnet import resnet18, resnet34
 from load_data import trainloader, testloader, valloader
 
 def main(argv):
+    model=resnet34(3, 10)
+    model_dir='models/'
+    model_name='resnet34'
+    epochs=1
     try:
         opts, args = getopt.getopt(argv,"le:",["layers=", "epochs="])
     except:
-        model=resnet34(3, 10)
-        model_dir='models/'
-        model_name='resnet34'
-        epochs=1
+        print("can't get args")
     for opt, arg in opts:
         if opt == '-l':
             if arg == '18':
