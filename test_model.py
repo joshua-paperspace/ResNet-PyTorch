@@ -16,12 +16,17 @@ def main(argv):
         print("Cannot continue without model.")
         return
     for opt, arg in opts:
+        print('in here')
         if opt == '-m':
+            print('recognizied m')
             PATH = arg
             if PATH[7:15] == 'resnet18':
                 model = resnet18(3, 10)
-            if PATH[7:15] == 'resnet34':
+            elif PATH[7:15] == 'resnet34':
                 model = resnet34(3, 10)
+            else:
+                print('why did I hit the else')
+                model = resnet18(3, 10)
     
     # model_dir ='models/resnet34'
     # PATH = model_dir + PATH
