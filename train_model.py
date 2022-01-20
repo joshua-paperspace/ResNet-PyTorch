@@ -15,7 +15,7 @@ def main(argv):
     try:
         opts, args = getopt.getopt(argv,"le:",["layers=", "epochs="])
     except:
-        print("can't get args")
+        print("Could not get any passed arguments.")
     for opt, arg in opts:
         if opt == '-l':
             if arg == '18':
@@ -65,6 +65,9 @@ def main(argv):
 
     PATH = model_dir + model_name + "-epochs-" + str(epochs) + ".pth"
     torch.save(model.state_dict(), PATH)
+
+    
+    exit(PATH)
 
 if __name__ == "__main__":
    main(sys.argv[1:])
