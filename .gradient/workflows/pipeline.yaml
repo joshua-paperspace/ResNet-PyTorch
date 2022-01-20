@@ -46,9 +46,13 @@ jobs:
         echo hi
         ls /inputs/
         echo hi
-        ls /inputs/resnet
-        cd /inputs/resnet
+        ls /inputs/resnet/
+        cd /inputs/resnet/
+        echo hi
         ls
+        echo hi
+        pwd
+        echo hi
         python train_model.py -l 18
     needs:
       - S3DataLoad
