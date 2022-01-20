@@ -4,6 +4,7 @@ import numpy as np
 import torch
 import torch.nn as nn
 from pathlib import Path
+import os
 
 from resnet import resnet18, resnet34
 from load_data import testloader
@@ -57,6 +58,9 @@ def main(argv):
     # myfile.touch(exist_ok=True)
     # f = open(myfile)
 
+    
+    if not os.path.exists('test_results'):
+        os.makedirs('test_results')
     filename = PATH[7:-4]
     print("filename: " + filename)
     file = open('test_results/' + filename + '.txt','w+')
