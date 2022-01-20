@@ -20,6 +20,7 @@ def main(argv):
         if opt == '-m':
             print('recognizied m')
             PATH = arg
+            print(PATH)
             if PATH[7:15] == 'resnet18':
                 model = resnet18(3, 10)
             elif PATH[7:15] == 'resnet34':
