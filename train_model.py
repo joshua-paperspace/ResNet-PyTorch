@@ -18,6 +18,8 @@ def main(argv):
         print("Could not get any passed arguments.")
     for opt, arg in opts:
         print('in for loop')
+        print('opt: '+ str(opt))
+        print('arg:' + str(arg))
         if opt == '-l':
             print('recognized l')
             if arg == '18':
