@@ -74,6 +74,9 @@ jobs:
       script: |-
         cd /inputs/repo/
         ls
+        ls models/
+        echo after
+        echo after
         echo after
     needs:
       - CloneRepo
