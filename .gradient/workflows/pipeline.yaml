@@ -37,6 +37,7 @@ jobs:
       script: |-
         cd /inputs/repo/
         python train_model.py --layers=18 2>/outputs/path
+        ls models/
     needs:
       - CloneRepo
       - S3DataLoad

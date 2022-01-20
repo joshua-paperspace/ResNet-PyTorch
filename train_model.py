@@ -24,12 +24,15 @@ def main(argv):
             print('recognized l')
             if arg == '18':
                 print('resnet18')
+                model_name = 'resnet18'
                 model = resnet18(3, 10)
             elif arg == '34':
                 print('resnet34')
+                model_name = 'resnet34'
                 model = resnet34(3, 10)
             else:
                 print('Else resnet34')
+                model_name = 'resnet34'
                 model = resnet34(3, 10)
         if opt == '-e':
             epochs = int(arg)
@@ -80,6 +83,8 @@ def main(argv):
 
     
     exit(PATH)
+
+    return None
 
 if __name__ == "__main__":
    main(sys.argv[1:])
