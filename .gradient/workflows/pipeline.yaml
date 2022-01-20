@@ -64,7 +64,8 @@ jobs:
         cd /inputs/repo/
         echo $./inputs/path
         echo hi
-        python test_model.py -m ./inputs/path
+        python test_model.py -m $(cat ./inputs/path)
+        echo we ran test_model.py
     needs:
       - CloneRepo
       - TrainResNet34
