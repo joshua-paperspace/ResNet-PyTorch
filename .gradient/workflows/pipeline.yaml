@@ -46,8 +46,8 @@ jobs:
         echo hi
         ls /inputs/
         echo hi
-        ls /inputs/resnet/
-        cd /inputs/resnet/
+        ls /inputs/repo/
+        cd /inputs/repo/
         echo hi
         ls
         echo hi
@@ -57,7 +57,7 @@ jobs:
     needs:
       - S3DataLoad
     inputs:
-      resnet: S3DataLoad.outputs.resnet
+      repo: CloneRepo.outputs.repo
     resources:
       instance-type: P4000
 context:
