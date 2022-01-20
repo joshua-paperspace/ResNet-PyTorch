@@ -62,7 +62,7 @@ jobs:
     inputs:
       repo: CloneRepo.outputs.repo
     resources:
-      instance-type: P4000
+      instance-type: A100
 context:
   event:
     github:

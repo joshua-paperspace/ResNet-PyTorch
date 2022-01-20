@@ -62,5 +62,8 @@ def main(argv):
 
     print('Finished Training')
 
-    PATH = model_dir + model_name + "-epochs" + str(epochs)
+    PATH = model_dir + model_name + "-epochs-" + str(epochs) + ".pth"
     torch.save(model.state_dict(), PATH)
+
+if __name__ == "__main__":
+   main(sys.argv[1:])
