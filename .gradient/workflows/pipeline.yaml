@@ -54,8 +54,7 @@ jobs:
         pwd
         echo hi
         python train_model.py -l 18
-        ls
-        echo hi
+        echo after training
         ls models/
     needs:
       - CloneRepo
