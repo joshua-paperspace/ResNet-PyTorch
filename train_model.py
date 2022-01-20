@@ -64,7 +64,12 @@ def main(argv):
     print('Finished Training')
 
     PATH = model_dir + model_name + "-epochs-" + str(epochs) + ".pth"
+    
+    print('before save')
     torch.save(model.state_dict(), PATH)
+    print('after save')
+
+    print(PATH)
 
     
     exit(PATH)
