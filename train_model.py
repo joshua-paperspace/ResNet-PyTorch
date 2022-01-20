@@ -20,7 +20,7 @@ def main(argv):
         print('in for loop')
         print('opt: '+ str(opt))
         print('arg:' + str(arg))
-        if opt == '-l':
+        if opt in ('-l', '--layers'):
             print('recognized l')
             if arg == '18':
                 print('resnet18')
