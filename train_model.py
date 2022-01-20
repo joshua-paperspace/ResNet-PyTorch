@@ -17,12 +17,17 @@ def main(argv):
     except:
         print("Could not get any passed arguments.")
     for opt, arg in opts:
+        print('in for loop')
         if opt == '-l':
+            print('recognized l')
             if arg == '18':
+                print('resnet18')
                 model = resnet18(3, 10)
             elif arg == '34':
+                print('resnet34')
                 model = resnet34(3, 10)
             else:
+                print('Else resnet34')
                 model = resnet34(3, 10)
         if opt == '-e':
             epochs = int(arg)
@@ -64,7 +69,7 @@ def main(argv):
     print('Finished Training')
 
     PATH = model_dir + model_name + "-epochs-" + str(epochs) + ".pth"
-    
+
     print('before save')
     torch.save(model.state_dict(), PATH)
     print('after save')
