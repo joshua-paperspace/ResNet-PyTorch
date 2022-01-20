@@ -28,24 +28,15 @@ jobs:
     outputs:
       resnet:
         type: volume
-    # outputs:
-    #   generatedFaces:
-    #     type: dataset
-    #     with:
-    #       ref: demo-dataset
     resources:
       instance-type: P4000
-  TrainResNet34:
+  TrainResNet18:
     uses: script@v1
     with:
       image: nvcr.io/nvidia/pytorch:21.10-py3
       script: |-
         cd /inputs/repo/
         python train_model.py -l 18 2>/outputs/path
-        echo $/outputs/path
-        echo after training
-        echo hello
-        ls models/
     needs:
       - CloneRepo
       - S3DataLoad
@@ -56,22 +47,19 @@ jobs:
         type: string
     resources:
       instance-type: A100
-  TestResNet34:
+  TestResNet18:
     uses: script@v1
     with:
       image: nvcr.io/nvidia/pytorch:21.10-py3
       script: |-
         cd /inputs/repo/
-        echo $./inputs/path
-        echo hi
         python test_model.py -m $(cat /inputs/path)
-        echo we ran test_model.py
     needs:
       - CloneRepo
-      - TrainResNet34
+      - TrainResNet18
     inputs:
       repo: CloneRepo.outputs.repo
-      path: TrainResNet34.outputs.path
+      path: TrainResNet18.outputs.path
     resources:
       instance-type: A100
 context:

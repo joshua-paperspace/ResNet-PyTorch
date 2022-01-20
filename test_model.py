@@ -3,6 +3,7 @@ import torch.optim as optim
 import numpy as np
 import torch
 import torch.nn as nn
+from pathlib import Path
 
 from resnet import resnet18, resnet34
 from load_data import testloader
@@ -51,6 +52,17 @@ def main(argv):
             total += labels.size(0)
             correct += (predicted == labels).sum().item()
 
+    
+    # myfile = Path('./test_results/' + filename + '.txt')
+    # myfile.touch(exist_ok=True)
+    # f = open(myfile)
+
+    filename = PATH[15:-3]
+    file = open('./test_results/' + filename + '.txt','w+')
+    file.write('Accuracy of the network on the 10000 test images: %d %%' % (
+        100 * correct / total))
+    file.close()
+    
     print('Accuracy of the network on the 10000 test images: %d %%' % (
         100 * correct / total))
 
