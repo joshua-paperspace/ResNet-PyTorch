@@ -64,11 +64,11 @@ def main(argv):
     filename = PATH[7:-4]
     print("filename: " + filename)
     file = open('test_results/' + filename + '.txt','w+')
-    file.write('Network accuracy on testset of 10,000 images: %d%%' % (
+    file.write('Network accuracy on test set of 10,000 images: %d%%' % (
         100 * correct / total))
     file.close()
 
-    print('Network accuracy on testset of 10,000 images: %d%%' % (
+    print('Network accuracy on test set of 10,000 images: %d%%' % (
         100 * correct / total))
 
     return
