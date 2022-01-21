@@ -34,7 +34,7 @@ def main(argv):
                 print('Else resnet34')
                 model_name = 'resnet34'
                 model = resnet34(3, 10)
-        if opt == '-e':
+        if opt in ('-e', '--epochs'):
             epochs = int(arg)
 
 
