@@ -71,6 +71,8 @@ def main(argv):
     print('Accuracy of the network on the 10000 test images: %d %%' % (
         100 * correct / total))
 
+    return
+
     # model=resnet34(3, 10)
     # model_dir='models/'
     # model_name='resnet34'
