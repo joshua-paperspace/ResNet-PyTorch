@@ -9,7 +9,7 @@ def main():
             print("Test results for: " + str(filepath))
             with open(filepath, 'r') as f:
                 print(f.read())
-            print('\n\n\n')
+            print('\n\n')
 
     return
 
