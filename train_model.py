@@ -13,7 +13,7 @@ def main(argv):
     model_name='resnet34'
     epochs=1
     try:
-        opts, args = getopt.getopt(argv,"l:e",["layers=", "epochs="])
+        opts, args = getopt.getopt(argv,"l:e:",["layers=", "epochs="])
     except:
         print("Could not get any passed arguments.")
     for opt, arg in opts:
