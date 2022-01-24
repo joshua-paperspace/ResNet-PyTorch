@@ -59,9 +59,9 @@ jobs:
       repo: CloneRepo.outputs.repo
     outputs:
       cifar10-data:
-        type: volume
+        type: dataset
       repo:
-        type: volume
+        type: dataset
     resources:
       instance-type: P4000
   TrainResNet19:
@@ -76,6 +76,7 @@ jobs:
         echo hi
         ls /inputs/cifar10-data/cifar-10-batches-py
         echo hi
+        ls /inputs/repo
         echo hi
         echo hi
         echo hi
