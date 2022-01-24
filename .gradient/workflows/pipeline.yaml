@@ -88,7 +88,7 @@ jobs:
       model:
         type: dataset
         with:
-          ref: gradient-next/resnet18-epochs-5
+          ref: gradient-next/ResNet-PyTorch
     outputs:
       model-id:
         type: string
