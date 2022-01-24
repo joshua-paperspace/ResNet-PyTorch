@@ -83,7 +83,7 @@ jobs:
       repo: TrainResNet18.outputs.repo
     resources:
       instance-type: P4000
-  Upload Model:
+  UploadModel:
     inputs:
       model:
         type: dataset
