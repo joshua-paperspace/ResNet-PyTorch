@@ -43,9 +43,7 @@ jobs:
               ref: dsrzkbpudtxoz5q
     outputs:
       resnet18-epochs-5:
-        type: dataset
-        with:
-          ref: gradient-next/ResNet-PyTorch
+        type: volume
       cifar10:
         type: dataset
         with:
