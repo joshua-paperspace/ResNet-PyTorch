@@ -29,8 +29,6 @@ jobs:
     outputs:
       cifar-dataset:
         type: dataset
-          with:
-            ref: cifar-dataset
     resources:
       instance-type: P4000
   TrainResNet18:
