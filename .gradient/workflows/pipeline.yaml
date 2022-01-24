@@ -40,7 +40,10 @@ jobs:
       script: |-
         cd /inputs/repo/
         ls /inputs
+        echo hi
         ls /inputs/cifar10-data
+        echo hi
+        ls /inputs/cifar10-data/cifar-10-batches-py
         echo hi
         echo hi
         echo hi
