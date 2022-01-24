@@ -87,7 +87,7 @@ jobs:
     needs:
       - TrainResNet18
     inputs:
-      cifar10-data: TrainResNet18.outputs.cifar-dataset
+      cifar10-data: TrainResNet18.outputs.cifar10-data
       repo: TrainResNet18.outputs.repo
     outputs:
       path:
