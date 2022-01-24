@@ -71,7 +71,10 @@ jobs:
     needs:
       - TrainResNet18
     inputs:
-      cifar10-data: TrainResNet18.outputs.cifar10
+      cifar10: 
+          type: dataset
+          with:
+              ref: dsrzkbpudtxoz5q
       repo: TrainResNet18.outputs.repo
     resources:
       instance-type: P4000
