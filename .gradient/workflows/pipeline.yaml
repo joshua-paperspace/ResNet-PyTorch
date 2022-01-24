@@ -30,7 +30,7 @@ jobs:
         echo hi
         cp -R /inputs/repo /outputs
         cp -R /inputs/cifar10 /outputs
-        cp -R models/resnet18-epochs-5.pth /outputs
+        cp -R models/resnet18-epochs-5.pth /outputs/trained-model
         echo hi
         echo Trained ResNet18
     needs:
