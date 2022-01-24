@@ -21,13 +21,16 @@ jobs:
         pip install -U pip
         pip install -r requirements.txt
         python load_data.py
+        cp -R data-test/cifar-10-batches-py /outputs/cifar-dataset
     needs:
       - CloneRepo
     inputs:
       repo: CloneRepo.outputs.repo
     outputs:
-      resnet:
-        type: volume
+      cifar-dataset:
+        type: dataset
+          with:
+            ref: cifar-dataset
     resources:
       instance-type: P4000
   TrainResNet18:
@@ -36,79 +39,26 @@ jobs:
       image: nvcr.io/nvidia/pytorch:21.10-py3
       script: |-
         cd /inputs/repo/
-        python train_model.py --layers=18 --epochs=5 2>/outputs/path
+        echo $cifar10-data
+        ls inputs/
+        echo hi
+        ls inputs/cifar10-data/
+        echo hi
+        echo hi
+        echo hi
+        echo hi
+        echo hi
+        echo hi
         echo Trained ResNet18
     needs:
       - CloneRepo
       - S3DataLoad
     inputs:
+      cifar10-data: S3Load.outputs.cifar-dataset
       repo: CloneRepo.outputs.repo
     outputs:
       path:
         type: string
-    resources:
-      instance-type: A100
-  TestResNet18:
-    uses: script@v1
-    with:
-      image: nvcr.io/nvidia/pytorch:21.10-py3
-      script: |-
-        cd /inputs/repo/
-        python test_model.py -m $(cat /inputs/path)
-    needs:
-      - CloneRepo
-      - TrainResNet18
-    inputs:
-      repo: CloneRepo.outputs.repo
-      path: TrainResNet18.outputs.path
-    resources:
-      instance-type: A100
-  TrainResNet34:
-    uses: script@v1
-    with:
-      image: nvcr.io/nvidia/pytorch:21.10-py3
-      script: |-
-        cd /inputs/repo/
-        python train_model.py --layers=34 --epochs=5 2>/outputs/path
-        echo Trained ResNet34
-    needs:
-      - CloneRepo
-      - S3DataLoad
-    inputs:
-      repo: CloneRepo.outputs.repo
-    outputs:
-      path:
-        type: string
-    resources:
-      instance-type: A100
-  TestResNet34:
-    uses: script@v1
-    with:
-      image: nvcr.io/nvidia/pytorch:21.10-py3
-      script: |-
-        cd /inputs/repo/
-        python test_model.py -m $(cat /inputs/path)
-    needs:
-      - CloneRepo
-      - TrainResNet34
-    inputs:
-      repo: CloneRepo.outputs.repo
-      path: TrainResNet34.outputs.path
-    resources:
-      instance-type: A100
-  CompareModels:
-    uses: script@v1
-    with:
-      image: nvcr.io/nvidia/pytorch:21.10-py3
-      script: |-
-        cd /inputs/repo/
-        python print_test_results.py
-    needs:
-      - CloneRepo
-      - TestResNet18
-      - TestResNet34
-    inputs:
-      repo: CloneRepo.outputs.repo
     resources:
       instance-type: A100
 context:

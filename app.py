@@ -1,5 +1,5 @@
 from flask import Flask, request, render_template, redirect, url_for
-from resnet34 import resnet34
+from resnet import resnet18
 from preprocess import imgToTensor
 import torch
 from PIL import Image
@@ -7,7 +7,7 @@ from PIL import Image
 classes = ('plane', 'car', 'bird', 'cat',
            'deer', 'dog', 'frog', 'horse', 'ship', 'truck')
 
-MODEL_PATH = './models/cifar_resnet.pth'
+MODEL_PATH = './models/resnet18-epochs-5.pth'
 
 app = Flask(__name__)
 
@@ -25,13 +25,14 @@ def predict_img():
     image.save(filename)
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    resnet34_test = resnet34(3, 10)
-    resnet34_test.load_state_dict(torch.load(MODEL_PATH, map_location=device))
+    model = resnet18(3, 10)
+    model.load_state_dict(torch.load(MODEL_PATH, map_location=device))
 
     tensor = imgToTensor(image)
     
-    output = resnet34_test(tensor)
+    output = model(tensor)
     _, predicted = torch.max(output.data, 1)
+    print(predicted)
     prediction = classes[predicted]
 
     return render_template('result.html', prediction=prediction)
