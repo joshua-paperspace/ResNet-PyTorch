@@ -54,7 +54,7 @@ jobs:
       - CloneRepo
       - S3DataLoad
     inputs:
-      cifar10-data: S3Load.outputs.cifar-dataset
+      cifar10-data: S3DataLoad.outputs.cifar-dataset
       repo: CloneRepo.outputs.repo
     outputs:
       path:
