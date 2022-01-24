@@ -60,8 +60,10 @@ jobs:
     outputs:
       cifar10-data:
         type: dataset
+        with:
+          ref: dsrzkbpudtxoz5q
       repo:
-        type: dataset
+        type: volume
     resources:
       instance-type: P4000
   TrainResNet19:
