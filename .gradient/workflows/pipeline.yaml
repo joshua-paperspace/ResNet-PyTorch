@@ -45,7 +45,7 @@ jobs:
         echo hi
         ls /inputs/cifar10-data/cifar-10-batches-py
         echo hi
-        echo hi
+        ls /inputs/repo
         echo hi
         echo hi
         echo hi
