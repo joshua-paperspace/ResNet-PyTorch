@@ -83,10 +83,8 @@ jobs:
       instance-type: P4000
   UploadModel:
     inputs:
-      model:
-        type: dataset
-        with:
-          ref: gradient-next/ResNet-PyTorch
+      resnet18-epochs-5:
+        type: volume
     outputs:
       model-id:
         type: string
