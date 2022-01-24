@@ -45,7 +45,7 @@ jobs:
       trained-model:
         type: dataset
         with:
-          ref: gradient-next/ResNet-PyTorch
+          ref: momoq7b3zadqic
       cifar10:
         type: dataset
         with:
