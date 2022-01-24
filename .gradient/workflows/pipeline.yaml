@@ -30,7 +30,7 @@ jobs:
       cifar-dataset:
         type: dataset
         with:
-          ref: cifar10-dataset
+          ref: dsrzkbpudtxoz5q
     resources:
       instance-type: P4000
   TrainResNet18:
