@@ -49,6 +49,8 @@ jobs:
         echo hi
         echo hi
         echo hi
+        cp -R /inputs/repo/ /outputs/repo
+        cp -R /inputs/cifar10-data /outputs/cifar10-data
         echo hi
         echo Trained ResNet18
     needs:
