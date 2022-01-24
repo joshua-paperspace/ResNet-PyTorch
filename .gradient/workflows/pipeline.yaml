@@ -62,8 +62,6 @@ jobs:
         type: volume
       repo:
         type: volume
-      path:
-        type: string
     resources:
       instance-type: P4000
   TrainResNet19:
