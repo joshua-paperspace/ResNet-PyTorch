@@ -95,6 +95,8 @@ jobs:
     outputs:
       model-id:
         type: string
+    resources:
+      instance-type: P4000
 context:
   event:
     github:
