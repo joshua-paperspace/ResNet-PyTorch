@@ -30,7 +30,7 @@ jobs:
         echo hi
         cp -R /inputs/repo /outputs
         cp -R /inputs/cifar10 /outputs
-        cp -R models/resnet18-epochs-5.pth /outputs/resnet18-epochs-5
+        cp -R models /outputs/trained_model
         echo hi
         echo Trained ResNet18
     needs:
@@ -42,8 +42,10 @@ jobs:
           with:
               ref: dsrzkbpudtxoz5q
     outputs:
-      resnet18-epochs-5:
-        type: volume
+      trained-model:
+        type: dataset
+        with:
+          ref: momoq7b3zadqic
       cifar10:
         type: dataset
         with:
@@ -82,16 +84,17 @@ jobs:
     resources:
       instance-type: P4000
   UploadModel:
-    inputs:
-      resnet18-epochs-5:
-        type: volume
-    outputs:
-      model-id:
-        type: string
     uses: create-model@v1
     with:
       name: resnet18-epochs-5
       type: Custom
+    needs:
+      - TrainResNet18
+    inputs:
+      model: TrainResNet18.outputs.trained-model
+    outputs:
+      model-id:
+        type: string
 context:
   event:
     github:
