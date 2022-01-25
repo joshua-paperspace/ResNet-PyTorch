@@ -80,6 +80,7 @@ jobs:
       script: |-
         cd /inputs/repo/
         python train_model.py --layers=34 --epochs=1 2>/outputs/path
+        ls models
     needs:
       - CloneRepo
     inputs:
