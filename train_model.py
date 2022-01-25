@@ -82,7 +82,7 @@ def main(argv):
     print(PATH)
 
     
-    exit(PATH)
+    # exit(PATH)
 
     return None
 
