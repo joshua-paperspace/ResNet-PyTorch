@@ -1,6 +1,6 @@
 import os
 
-results_dir = 'test_results'
+results_dir = '/inputs/test-results'
 
 def main():
     for filename in os.listdir(results_dir):

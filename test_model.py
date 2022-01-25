@@ -54,16 +54,16 @@ def main(argv):
             correct += (predicted == labels).sum().item()
 
     
-    # myfile = Path('./test_results/' + filename + '.txt')
+    # myfile = Path('./test-results/' + filename + '.txt')
     # myfile.touch(exist_ok=True)
     # f = open(myfile)
 
     
-    if not os.path.exists('test_results'):
-        os.makedirs('test_results')
+    if not os.path.exists('test-results'):
+        os.makedirs('test-results')
     filename = PATH[15:-4]
     print("filename: " + filename)
-    file = open('test_results/' + filename + '.txt','w+')
+    file = open('test-results/' + filename + '.txt','w+')
     file.write('Network accuracy on test set of 10,000 images: %d%%' % (
         100 * correct / total))
     file.close()
