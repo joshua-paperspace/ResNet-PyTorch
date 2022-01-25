@@ -57,6 +57,7 @@ jobs:
         ls /inputs/models
         echo hi
         python test_model.py -m /inputs/models/resnet18-epochs-1.pth
+        cp -R /inputs/repo /outputs
         cp -R ./test-results /outputs
         echo hi
         echo hi
