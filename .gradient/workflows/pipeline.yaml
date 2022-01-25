@@ -30,7 +30,7 @@ jobs:
         echo hi
         cp -R /inputs/repo /outputs
         cp -R /inputs/cifar10 /outputs
-        cp -R models /outputs/trained_model
+        cp -R models /outputs/trained-model
         echo hi
         echo Trained ResNet18
     needs:
@@ -42,7 +42,7 @@ jobs:
           with:
               ref: dsrzkbpudtxoz5q
     outputs:
-      trained_model:
+      trained-model:
         type: dataset
         with:
           ref: dsr7vff9zehs3b3
@@ -91,7 +91,7 @@ jobs:
     needs:
       - TrainResNet18
     inputs:
-      model: TrainResNet18.outputs.trained_model
+      model: TrainResNet18.outputs.trained-model
     outputs:
       model-id:
         type: string
