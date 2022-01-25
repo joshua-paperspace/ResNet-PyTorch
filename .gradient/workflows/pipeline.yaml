@@ -83,7 +83,6 @@ jobs:
         cp -R /inputs/repo /outputs
         cp -R /inputs/cifar10 /outputs
         cp -R models /outputs
-        echo Trained ResNet34
     needs:
       - CloneRepo
     inputs:
@@ -96,7 +95,7 @@ jobs:
       models:
         type: dataset
         with:
-          ref: dsr7vff9zehs3b3
+          ref: dsryffwi0mj9z3a
       cifar10:
         type: dataset
         with:

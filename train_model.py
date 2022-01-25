@@ -37,6 +37,7 @@ def main(argv):
         if opt in ('-e', '--epochs'):
             epochs = int(arg)
 
+    print(model_name)
 
     criterion = nn.CrossEntropyLoss()
     optimizer = optim.SGD(model.parameters(), lr=0.001, momentum=0.9)
