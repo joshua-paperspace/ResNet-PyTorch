@@ -42,7 +42,7 @@ jobs:
           with:
               ref: dsrzkbpudtxoz5q
     outputs:
-      trained-model:
+      trained_model:
         type: dataset
         with:
           ref: dsr7vff9zehs3b3
@@ -91,7 +91,7 @@ jobs:
     needs:
       - TrainResNet18
     inputs:
-      model: TrainResNet18.outputs.trained-model
+      model: TrainResNet18.outputs.trained_model
     outputs:
       model-id:
         type: string

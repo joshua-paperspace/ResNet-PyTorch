@@ -1,0 +1,36 @@
+import streamlit as st
+import pandas as pd
+from PIL import Image
+import torch
+from preprocess import imgToTensor
+from resnet import resnet18
+
+classes = ('plane', 'car', 'bird', 'cat',
+           'deer', 'dog', 'frog', 'horse', 'ship', 'truck')
+
+MODEL_PATH = './models/resnet18-epochs-5.pth'
+
+### Excluding Imports ###
+st.title("Upload + Classification Example")
+
+uploaded_file = st.file_uploader("Choose an image...", type=['png','jpeg'])
+if uploaded_file is not None:
+    image = Image.open(uploaded_file)
+    st.image(image, caption='Uploaded Image.', use_column_width=True)
+    st.write("")
+    st.write("Classifying...")
+
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    model = resnet18(3, 10)
+    model.load_state_dict(torch.load(MODEL_PATH, map_location=device))
+
+    tensor = imgToTensor(image)
+    
+    output = model(tensor)
+    _, predicted = torch.max(output.data, 1)
+    # print(predicted)
+    prediction = classes[predicted]
+
+
+    # label = predict(uploaded_file)
+    st.write(prediction)

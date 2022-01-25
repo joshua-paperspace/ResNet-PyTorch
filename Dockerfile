@@ -11,11 +11,11 @@ WORKDIR /app
 RUN pip3 install -U pip
 RUN pip3 install -r requirements.txt
 
-EXPOSE 8000
+EXPOSE 8501
 
 COPY . /app
 
-CMD ["python3", "app.py"]
+CMD ["streamlit", "run", "app2.py"]
 
 # "--host=0.0.0.0"
 # ENTRYPOINT [ "python3" ]
