@@ -52,14 +52,18 @@ jobs:
       image: nvcr.io/nvidia/pytorch:21.10-py3
       script: |-
         cd /inputs/repo/
+        ls /inputs
+        echo hi
+        ls /inputs/models
         cp -R /inputs/repo /outputs  
         python test_model.py -m /inputs/models/resnet18-epochs-1.pth
+        cp -R test-results /outputs  
     needs:
       - TrainResNet18
     inputs:
       repo: TrainResNet18.outputs.repo
       path: TrainResNet18.outputs.path
-      model: TrainResNet18.outputs.models
+      models: TrainResNet18.outputs.models
     outputs:
       test-results:
         type: dataset
