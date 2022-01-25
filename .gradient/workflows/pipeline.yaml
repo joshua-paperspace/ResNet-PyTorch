@@ -60,7 +60,7 @@ jobs:
       path: TrainResNet18.outputs.path
       model: TrainResNet18.outputs.trained-model
     resources:
-      instance-type: A100
+      instance-type: P4000
 context:
   event:
     github:
