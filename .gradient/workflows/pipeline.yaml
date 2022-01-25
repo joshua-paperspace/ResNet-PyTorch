@@ -22,7 +22,6 @@ jobs:
         cp -R /inputs/repo /outputs
         cp -R /inputs/cifar10 /outputs
         cp -R models /outputs
-        echo Trained ResNet18
     needs:
       - CloneRepo
     inputs:
