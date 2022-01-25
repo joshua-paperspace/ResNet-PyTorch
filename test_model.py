@@ -33,6 +33,9 @@ def main(argv):
     
     # model_dir ='models/resnet34'
     # PATH = model_dir + PATH
+    print('a')
+    print(PATH)
+    print('b')
     model.load_state_dict(torch.load(PATH))
 
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")

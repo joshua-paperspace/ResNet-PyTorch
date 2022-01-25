@@ -32,7 +32,7 @@ jobs:
           with:
               ref: dsrzkbpudtxoz5q
     outputs:
-      trained-model:
+      models:
         type: dataset
         with:
           ref: dsr7vff9zehs3b3
@@ -54,7 +54,7 @@ jobs:
         cd /inputs/repo/
         ls /inputs/
         echo hi
-        ls /inputs/trained-model
+        ls /inputs/models
         echo hi
         python test_model.py -m /inputs/models/resnet18-epochs-1.pth
         cp -R ./test-results /outputs
@@ -67,7 +67,7 @@ jobs:
     inputs:
       repo: TrainResNet18.outputs.repo
       path: TrainResNet18.outputs.path
-      model: TrainResNet18.outputs.trained-model
+      model: TrainResNet18.outputs.models
     outputs:
       test-results:
         type: dataset
