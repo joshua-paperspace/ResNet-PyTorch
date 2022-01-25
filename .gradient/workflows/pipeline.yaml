@@ -21,7 +21,7 @@ jobs:
         python train_model.py --layers=18 --epochs=1 2>/outputs/path
         cp -R /inputs/repo /outputs
         cp -R /inputs/cifar10 /outputs
-        cp -R models /outputs/trained-model
+        cp -R models /outputs
         echo Trained ResNet18
     needs:
       - CloneRepo
@@ -56,7 +56,7 @@ jobs:
         echo hi
         ls /inputs/trained-model
         echo hi
-        python test_model.py -m /inputs/trained-model/models/resnet18-epochs-1.pth
+        python test_model.py -m /inputs/models/resnet18-epochs-1.pth
         echo hi
         echo hi
         echo hi

@@ -82,9 +82,9 @@ def main(argv):
     print(PATH)
 
     
-    # exit(PATH)
+    exit(PATH)
 
-    return None
+    # return None
 
 if __name__ == "__main__":
    main(sys.argv[1:])
