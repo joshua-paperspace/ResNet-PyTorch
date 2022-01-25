@@ -17,17 +17,17 @@ def main(argv):
     except:
         print("Could not get any passed arguments.")
     for opt, arg in opts:
-        print('in for loop')
-        print('opt: '+ str(opt))
-        print('arg:' + str(arg))
+        # print('in for loop')
+        # print('opt: '+ str(opt))
+        # print('arg:' + str(arg))
         if opt in ('-l', '--layers'):
-            print('recognized l')
+            # print('recognized l')
             if arg == '18':
                 print('resnet18')
                 model_name = 'resnet18'
                 model = resnet18(3, 10)
             elif arg == '34':
-                print('resnet34')
+                # print('resnet34')
                 model_name = 'resnet34'
                 model = resnet34(3, 10)
             else:
@@ -37,14 +37,14 @@ def main(argv):
         if opt in ('-e', '--epochs'):
             epochs = int(arg)
 
-    print(model_name)
+    # print(model_name)
 
     criterion = nn.CrossEntropyLoss()
     optimizer = optim.SGD(model.parameters(), lr=0.001, momentum=0.9)
 
 
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-    print(device)
+    # print(device)
     model.to(device)
 
 
