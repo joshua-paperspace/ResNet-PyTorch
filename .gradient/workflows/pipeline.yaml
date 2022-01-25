@@ -73,6 +73,8 @@ jobs:
         type: dataset
         with:
           ref: dstdrdgk1bxsbjs
+      repo:
+        type: volume
     resources:
       instance-type: P4000
   CompareModels:
@@ -85,8 +87,8 @@ jobs:
     needs:
       - TestResNet18
     inputs:
-      repo: CloneRepo.outputs.repo
-      repo: CloneRepo.outputs.test-results
+      repo: TestResNet18.outputs.repo
+      test-results: TestResNet18.outputs.test-results
     resources:
       instance-type: P5000
 context:
