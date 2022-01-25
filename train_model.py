@@ -76,11 +76,13 @@ def main(argv):
 
     PATH = model_dir + model_name + "-epochs-" + str(epochs) + ".pth"
 
-    print('before save')
-    torch.save(model.state_dict(), PATH)
-    print('after save')
-
     print(PATH)
+    
+    # print('before save')
+    torch.save(model.state_dict(), PATH)
+    # print('after save')
+
+    
 
     
     # exit(PATH)
