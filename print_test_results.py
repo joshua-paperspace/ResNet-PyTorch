@@ -1,15 +1,16 @@
 import os
 
-results_dir = '/inputs/test-results'
+results_dir = ['/inputs/test-results-a', '/inputs/test-results-b']
 
 def main():
-    for filename in os.listdir(results_dir):
-        filepath= os.path.join(results_dir,filename)
-        if os.path.isfile(filepath):
-            print("Test results for: " + str(filepath))
-            with open(filepath, 'r') as f:
-                print(f.read())
-            print('\n\n')
+    for folder in results_dir:
+        for filename in os.listdir(folder):
+            filepath= os.path.join(folder,filename)
+            if os.path.isfile(filepath):
+                print("Test results for: " + str(filepath))
+                with open(filepath, 'r') as f:
+                    print(f.read())
+                print('\n\n')
 
     return
 
