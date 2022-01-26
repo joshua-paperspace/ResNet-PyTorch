@@ -56,7 +56,7 @@ jobs:
         ls /inputs/models
         cp -R /inputs/repo /outputs  
         python test_model.py -m /inputs/models/resnet18-epochs-1.pth
-        cp -R test-results /outputs  
+        cp -R test-results /outputs
     needs:
       - TrainResNet18
     inputs:
@@ -94,7 +94,7 @@ jobs:
       models:
         type: dataset
         with:
-          ref: dsryffwi0mj9z3a
+          ref: dstumtc47jp1fz3
       cifar10:
         type: dataset
         with:
