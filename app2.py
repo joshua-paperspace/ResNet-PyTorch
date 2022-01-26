@@ -8,7 +8,8 @@ from resnet import resnet18
 classes = ('plane', 'car', 'bird', 'cat',
            'deer', 'dog', 'frog', 'horse', 'ship', 'truck')
 
-MODEL_PATH = './models/resnet18-epochs-5.pth'
+# MODEL_PATH = './models/resnet18-epochs-5.pth'
+MODEL_PATH = '/opt/model/models/resnet18-epochs-5.pth'
 
 ### Excluding Imports ###
 st.title("Upload + Classification Example")
