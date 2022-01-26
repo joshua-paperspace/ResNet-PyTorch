@@ -23,9 +23,9 @@ def main(argv):
             print('recognizied m')
             PATH = arg
             print(PATH)
-            if PATH[15:23] == 'resnet18':
+            if PATH[14:22] == 'resnet18':
                 model = resnet18(3, 10)
-            elif PATH[15:23] == 'resnet34':
+            elif PATH[14:22] == 'resnet34':
                 model = resnet34(3, 10)
             else:
                 print('why did I hit the else')
@@ -64,7 +64,7 @@ def main(argv):
     
     if not os.path.exists('test-results'):
         os.makedirs('test-results')
-    filename = PATH[15:-4]
+    filename = PATH[14:-4]
     print("filename: " + filename)
     file = open('test-results/' + filename + '.txt','w+')
     file.write('Network accuracy on test set of 10,000 images: %d%%' % (

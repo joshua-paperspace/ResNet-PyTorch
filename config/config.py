@@ -1,1 +1,1 @@
-data_dir = './data-test'
+data_dir = '/inputs/cifar10'

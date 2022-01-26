@@ -9,7 +9,7 @@ from load_data import trainloader, testloader, valloader
 
 def main(argv):
     model=resnet34(3, 10)
-    model_dir='models/'
+    model_dir='model/'
     model_name='resnet34'
     epochs=1
     try:
@@ -77,7 +77,7 @@ def main(argv):
     PATH = model_dir + model_name + "-epochs-" + str(epochs) + ".pth"
 
     print(PATH)
-    
+
     # print('before save')
     torch.save(model.state_dict(), PATH)
     # print('after save')

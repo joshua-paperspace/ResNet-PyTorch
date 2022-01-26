@@ -21,24 +21,20 @@ jobs:
         python train_model.py --layers=18 --epochs=1 2>/outputs/path
         cp -R /inputs/repo /outputs
         cp -R /inputs/cifar10 /outputs
-        cp -R models /outputs
+        cp -R model /outputs
     needs:
       - CloneRepo
     inputs:
       repo: CloneRepo.outputs.repo
-      cifar10: 
-          type: dataset
-          with:
-              ref: dsrzkbpudtxoz5q
-    outputs:
-      models:
-        type: dataset
-        with:
-          ref: dsr7vff9zehs3b3
-      cifar10:
+      cifar10-data: 
         type: dataset
         with:
           ref: dsrzkbpudtxoz5q
+    outputs:
+      model:
+        type: dataset
+        with:
+          ref: dsrsgtp083suuyu
       repo:
         type: volume
       path:
@@ -53,16 +49,23 @@ jobs:
         cd /inputs/repo/
         ls /inputs
         echo hi
-        ls /inputs/models
+        ls /inputs/model
         cp -R /inputs/repo /outputs  
-        python test_model.py -m /inputs/models/resnet18-epochs-1.pth
+        python test_model.py -m /inputs/model/resnet18-epochs-1.pth
         cp -R test-results /outputs
     needs:
       - TrainResNet18
     inputs:
       repo: TrainResNet18.outputs.repo
       path: TrainResNet18.outputs.path
-      models: TrainResNet18.outputs.models
+      cifar10-data: 
+        type: dataset
+        with:
+          ref: dsrzkbpudtxoz5q
+      model:
+        type: dataset
+        with:
+          ref: dsrsgtp083suuyu
     outputs:
       test-results:
         type: dataset
@@ -81,24 +84,20 @@ jobs:
         python train_model.py --layers=34 --epochs=1 2>/outputs/path
         cp -R /inputs/repo /outputs
         cp -R /inputs/cifar10 /outputs
-        cp -R models /outputs
+        cp -R model /outputs
     needs:
       - CloneRepo
     inputs:
       repo: CloneRepo.outputs.repo
-      cifar10: 
-          type: dataset
-          with:
-              ref: dsrzkbpudtxoz5q
-    outputs:
-      models:
-        type: dataset
-        with:
-          ref: dsryffwi0mj9z3a
-      cifar10:
+      cifar10-data: 
         type: dataset
         with:
           ref: dsrzkbpudtxoz5q
+    outputs:
+      model:
+        type: dataset
+        with:
+          ref: dsrlhp90qjun0k8
       repo:
         type: volume
       path:
@@ -113,16 +112,23 @@ jobs:
         cd /inputs/repo/
         ls /inputs
         echo hi
-        ls /inputs/models
+        ls /inputs/model
         cp -R /inputs/repo /outputs  
-        python test_model.py -m /inputs/models/resnet34-epochs-1.pth
+        python test_model.py -m /inputs/model/resnet34-epochs-1.pth
         cp -R test-results /outputs  
     needs:
       - TrainResNet34
     inputs:
       repo: TrainResNet34.outputs.repo
       path: TrainResNet34.outputs.path
-      models: TrainResNet34.outputs.models
+      model:
+        type: dataset
+        with:
+          ref: dsrlhp90qjun0k8
+      cifar10-data: 
+        type: dataset
+        with:
+          ref: dsrzkbpudtxoz5q
     outputs:
       test-results:
         type: dataset
