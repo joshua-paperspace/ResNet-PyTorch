@@ -58,14 +58,11 @@ jobs:
     inputs:
       repo: TrainResNet18.outputs.repo
       path: TrainResNet18.outputs.path
+      model: TrainResNet18.outputs.model
       cifar10-data: 
         type: dataset
         with:
           ref: dsrzkbpudtxoz5q
-      model:
-        type: dataset
-        with:
-          ref: dsrsgtp083suuyu
     outputs:
       test-results:
         type: dataset
@@ -121,10 +118,7 @@ jobs:
     inputs:
       repo: TrainResNet34.outputs.repo
       path: TrainResNet34.outputs.path
-      model:
-        type: dataset
-        with:
-          ref: dsrlhp90qjun0k8
+      model: TrainResNet34.outputs.model
       cifar10-data: 
         type: dataset
         with:
