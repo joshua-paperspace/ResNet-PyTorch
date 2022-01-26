@@ -94,7 +94,7 @@ jobs:
       models:
         type: dataset
         with:
-          ref: dstumtc47jp1fz3
+          ref: dsryffwi0mj9z3a
       cifar10:
         type: dataset
         with:
