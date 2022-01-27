@@ -173,7 +173,7 @@ jobs:
       script: |-
         cd /inputs/repo/
         python print_test_results.py
-        ls
+        cp -R /inputs/repo /outputs
     needs:
       - TestResNet18
       - TestResNet34
@@ -198,16 +198,10 @@ jobs:
         pip install gradient -U --force
         gradient deployments update --id 9ff664eb-7f79-4584-928b-dcb7b0125164 --projectId prmniscgk --spec ./deployment.yaml                            
     needs:
-      - TestResNet18
-      - TestResNet34
+      - CompareModels
     inputs:
       model-id: CompareModels.outputs.model-id
-      repo: TestResNet18.outputs.repo
-      test-results-a: TestResNet18.outputs.test-results
-      test-results-b: TestResNet34.outputs.test-results
-    outputs:
-      bestmodel:
-          type: string
+      repo: CompareModels.outputs.repo
     resources:
       instance-type: P5000
 context:
