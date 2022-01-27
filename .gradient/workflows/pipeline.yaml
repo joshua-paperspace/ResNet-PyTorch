@@ -147,10 +147,30 @@ jobs:
       repo: TestResNet18.outputs.repo
       test-results-a: TestResNet18.outputs.test-results
       test-results-b: TestResNet34.outputs.test-results
+    outputs:
+      bestmodel:
+          type: string
+    resources:
+      instance-type: P5000
+  UploadModel:
+    uses: create-model@v1
+    with:
+      name: resnet-model
+      type: Custom # Tensorflow, ONNX, or Custom
+    needs:
+      - CompareModels
+    inputs:
+      bestmodel: CompareModels.outputs.bestmodel
+      model:
+        type: dataset
+        with:
+          ref: $(cat /inputs/bestmodels) # Example dataset ref
+    outputs:
+      model-id:
+        type: string
     resources:
       instance-type: P5000
 context:
   event:
     github:
       url: https://github.com/joshua-paperspace/ResNet-PyTorch
-
