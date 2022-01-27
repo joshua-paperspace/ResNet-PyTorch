@@ -119,22 +119,22 @@ jobs:
     resources:
       instance-type: P4000
   UploadResNet34:
-    uses: create-model@v1
+    uses: script@v1
+    with:
+      image: nvcr.io/nvidia/pytorch:21.10-py3
+      script: |-
+        cp -R /inputs/model/resnet34-epochs-1.pth /outputs  
     needs:
       - TrainResNet34
-    with:
-      name: resnet34
-      type: Custom
     inputs:
-      model:
+      model: TrainResNet34.outputs.model
+    outputs:
+      resnet34:
         type: dataset
         with:
-          ref: dsrlhp90qjun0k8
-    outputs:
-      model-id:
-        type: string
+          ref: moxbm3kgotybp3
     resources:
-      instance-type: P5000
+      instance-type: P4000
   TestResNet34:
     uses: script@v1
     with:
@@ -196,7 +196,8 @@ jobs:
         cd /inputs/repo/
         python write_deployment_file.py --id=$(cat /inputs/model-id)
         pip install gradient -U --force
-        gradient deployments update --id 9ff664eb-7f79-4584-928b-dcb7b0125164 --projectId prmniscgk --spec ./deployment.yaml                            
+        gradient deployments update --id 4f788033-d546-4dca-bae5-7d385a57483e --projectId prmniscgk --spec ./deployment.yaml --apiKey 28e6fcc6207a280c16e30f80a87f07
+                                
     needs:
       - CompareModels
     inputs:
