@@ -130,7 +130,7 @@ jobs:
       model: TrainResNet34.outputs.model
     outputs:
       resnet34:
-        type: dataset
+        type: volume
         with:
           ref: moxbm3kgotybp3
     resources:
@@ -196,8 +196,7 @@ jobs:
         cd /inputs/repo/
         python write_deployment_file.py --id=$(cat /inputs/model-id)
         pip install gradient -U --force
-        gradient deployments update --id 4f788033-d546-4dca-bae5-7d385a57483e --projectId prmniscgk --spec ./deployment.yaml --apiKey 28e6fcc6207a280c16e30f80a87f07
-                                
+        gradient deployments update --id 4f788033-d546-4dca-bae5-7d385a57483e --projectId prmniscgk --spec ./deployment.yaml --apiKey 28e6fcc6207a280c16e30f80a87f07                         
     needs:
       - CompareModels
     inputs:
