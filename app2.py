@@ -4,12 +4,17 @@ from PIL import Image
 import torch
 from preprocess import imgToTensor
 from resnet import resnet18
+import os
 
 classes = ('plane', 'car', 'bird', 'cat',
            'deer', 'dog', 'frog', 'horse', 'ship', 'truck')
 
-# MODEL_PATH = './models/resnet18-epochs-5.pth'
-MODEL_PATH = '/opt/models/models/resnet18-epochs-5.pth'
+MODEL_DIR = '/opt/models/resnet18-epochs-5.pth'
+
+for filename in os.listdir(MODEL_DIR):
+    if filename[:-4] == '.pth':
+        filepath= os.path.join(MODEL_DIR,filename)
+MODEL_PATH = filepath
 
 ### Excluding Imports ###
 st.title("Upload + Classification Example")
