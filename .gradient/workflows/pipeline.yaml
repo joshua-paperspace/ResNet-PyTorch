@@ -53,6 +53,9 @@ jobs:
         type: dataset
         with:
           ref: dsrsgtp083suuyu
+    outputs:
+      model-id:
+        type: string
     resources:
       instance-type: P5000
   TestResNet18:
@@ -127,6 +130,9 @@ jobs:
         type: dataset
         with:
           ref: dsrlhp90qjun0k8
+    outputs:
+      model-id:
+        type: string
     resources:
       instance-type: P5000
   TestResNet34:
