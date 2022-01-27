@@ -184,8 +184,8 @@ jobs:
     outputs:
       model-id:
           type: string
-    repo:
-        type: volume
+      repo:
+          type: volume
     resources:
       instance-type: P5000
   DeployModel:

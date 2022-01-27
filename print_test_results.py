@@ -5,8 +5,8 @@ results_dir = ['/inputs/test-results-a', '/inputs/test-results-b']
 accuracy = 0
 # model_path = 'sample_model_path.pth'
 
-model_id_dict = {'resnet18-epochs-1.txt': 'dsrsgtp083suuyu'
-            ,'resnet34-epochs-1.txt': 'dsrzkbpudtxoz5q'}
+model_id_dict = {'resnet18-epochs-1.txt': 'mosq6dg6bz01aww'
+            ,'resnet34-epochs-1.txt': 'movalaty7v0itu'}
 
 model_id = 'sample-model-id'
 
