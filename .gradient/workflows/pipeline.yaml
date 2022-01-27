@@ -41,7 +41,9 @@ jobs:
         type: string
     resources:
       instance-type: P4000
-  UploadResnet18:
+  UploadResNet18:
+    needs:
+      - TrainResNet34
     uses: create-model@v1
     with:
       name: resnet18
@@ -51,6 +53,8 @@ jobs:
         type: dataset
         with:
           ref: dsrsgtp083suuyu
+    resources:
+      instance-type: P5000
   TestResNet18:
     uses: script@v1
     with:
@@ -111,8 +115,10 @@ jobs:
         type: string
     resources:
       instance-type: P4000
-  UploadResnet34:
+  UploadResNet34:
     uses: create-model@v1
+    needs:
+      - TrainResNet34
     with:
       name: resnet34
       type: Custom
@@ -121,6 +127,8 @@ jobs:
         type: dataset
         with:
           ref: dsrlhp90qjun0k8
+    resources:
+      instance-type: P5000
   TestResNet34:
     uses: script@v1
     with:
