@@ -57,7 +57,7 @@ jobs:
       model-id:
         type: string
     resources:
-      instance-type: P5000
+      instance-type: P4000
   TestResNet18:
     uses: script@v1
     with:
@@ -134,7 +134,7 @@ jobs:
       model-id:
         type: string
     resources:
-      instance-type: P5000
+      instance-type: P4000
   TestResNet34:
     uses: script@v1
     with:
@@ -187,7 +187,7 @@ jobs:
       repo:
           type: volume
     resources:
-      instance-type: P5000
+      instance-type: P4000
   DeployModel:
     uses: script@v1
     with:
@@ -203,7 +203,7 @@ jobs:
       model-id: CompareModels.outputs.model-id
       repo: CompareModels.outputs.repo
     resources:
-      instance-type: P5000
+      instance-type: P4000
 context:
   event:
     github:
