@@ -152,24 +152,21 @@ jobs:
           type: string
     resources:
       instance-type: P5000
-  UploadModel:
-    uses: create-model@v1
-    with:
-      name: resnet-model
-      type: Custom # Tensorflow, ONNX, or Custom
-    needs:
-      - CompareModels
+  Upload Model:
     inputs:
-      bestmodel: CompareModels.outputs.bestmodel
       model:
         type: dataset
         with:
-          ref: $(cat /inputs/bestmodels) # Example dataset ref
+          ref: CompareModels.output.bestmodel
     outputs:
       model-id:
         type: string
-    resources:
-      instance-type: P5000
+    needs:
+      - CompareModels
+    uses: create-model@v1
+    with:
+      name: resnet-model
+      type: Customer 
 context:
   event:
     github:
