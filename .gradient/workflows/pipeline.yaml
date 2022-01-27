@@ -157,7 +157,7 @@ jobs:
       model:
         type: dataset
         with:
-          ref: CompareModels.output.bestmodel
+          ref: CompareModels.outputs.bestmodel
     outputs:
       model-id:
         type: string
