@@ -5,10 +5,10 @@ results_dir = ['/inputs/test-results-a', '/inputs/test-results-b']
 accuracy = 0
 # model_path = 'sample_model_path.pth'
 
-ref_dict = {'resnet18-epochs-1.txt': 'dsrsgtp083suuyu'
+model_id_dict = {'resnet18-epochs-1.txt': 'dsrsgtp083suuyu'
             ,'resnet34-epochs-1.txt': 'dsrzkbpudtxoz5q'}
 
-model_ref = 'sample-ref'
+model_id = 'sample-model-id'
 
 def main():
     for folder in results_dir:
@@ -22,11 +22,11 @@ def main():
                     print(results)
                     temp_accuracy = int(results[-3:-1])
                     if temp_accuracy > accuracy:
-                        model_ref = ref_dict[filename]
+                        model_id = model_id_dict[filename]
                 print('\n\n')
 
-    with open("/outputs/bestmodel", "w") as o:
-        o.write(model_ref)
+    with open("/outputs/model-id", "w") as o:
+        o.write(model_id)
 
     return
 
