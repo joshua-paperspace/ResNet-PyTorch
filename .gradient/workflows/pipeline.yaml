@@ -152,7 +152,7 @@ jobs:
           type: string
     resources:
       instance-type: P5000
-  Upload Model:
+  UploadModel:
     inputs:
       model:
         type: dataset
