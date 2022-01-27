@@ -43,7 +43,7 @@ jobs:
       instance-type: P4000
   UploadResNet18:
     needs:
-      - TrainResNet34
+      - TrainResNet18
     uses: create-model@v1
     with:
       name: resnet18
