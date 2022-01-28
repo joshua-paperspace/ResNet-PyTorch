@@ -5,6 +5,7 @@ import torch
 import torch.nn as nn
 from pathlib import Path
 import os
+import json
 
 from resnet import resnet18, resnet34
 from load_data import testloader
@@ -12,14 +13,14 @@ from load_data import testloader
 def main(argv):
 
     try:
-        opts, args = getopt.getopt(argv,"m:",["model="])
+        opts, args = getopt.getopt(argv,"m:i:",["model=", "id="])
     except:
         print("Could not get any passed arguments.")
         print("Cannot continue without model.")
         return
     for opt, arg in opts:
         print('in here')
-        if opt == '-m':
+        if opt in ('-m', '--model'):
             print('recognizied m')
             PATH = arg
             print(PATH)
@@ -30,6 +31,8 @@ def main(argv):
             else:
                 print('why did I hit the else')
                 model = resnet18(3, 10)
+        elif opt in ('-i', '--id'):
+            model_id = arg
     
     # model_dir ='models/resnet34'
     # PATH = model_dir + PATH
@@ -61,15 +64,28 @@ def main(argv):
     # myfile.touch(exist_ok=True)
     # f = open(myfile)
 
-    
     if not os.path.exists('test-results'):
         os.makedirs('test-results')
+    
     filename = PATH[14:-4]
-    print("filename: " + filename)
-    file = open('test-results/' + filename + '.txt','w+')
-    file.write('Network accuracy on test set of 10,000 images: %d%%' % (
-        100 * correct / total))
-    file.close()
+
+    test_results_json = {
+        'model_name': filename
+        ,'accuracy': 100 * correct / total
+        ,'model_id': model_id
+    }
+
+    with open('test-results/' + filename + '.json', 'w') as outfile:
+        json.dump(test_results_json, outfile)
+    
+    # if not os.path.exists('test-results'):
+    #     os.makedirs('test-results')
+    # filename = PATH[14:-4]
+    # print("filename: " + filename)
+    # file = open('test-results/' + filename + '.txt','w+')
+    # file.write('Network accuracy on test set of 10,000 images: %d%%' % (
+    #     100 * correct / total))
+    # file.close()
 
     print('Network accuracy on test set of 10,000 images: %d%%' % (
         100 * correct / total))

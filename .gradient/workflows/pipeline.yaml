@@ -12,12 +12,38 @@ jobs:
         type: volume
     resources:
       instance-type: C4
-  UploadResNet18:
+  TrainResNet18:
+    uses: script@v1
+    with:
+      image: nvcr.io/nvidia/pytorch:21.10-py3
+      script: |-
+        cd /inputs/repo/
+        python train_model.py --layers=18 --epochs=1
+        cp -R /inputs/repo /outputs
+        cp -R model /outputs
     needs:
       - CloneRepo
+    inputs:
+      repo: CloneRepo.outputs.repo
+      cifar10-data: 
+        type: dataset
+        with:
+          ref: dsrzkbpudtxoz5q
+    outputs:
+      model:
+        type: dataset
+        with:
+          ref: dsrsgtp083suuyu
+      repo:
+        type: volume
+    resources:
+      instance-type: P5000
+  UploadResNet18:
+    needs:
+      - TrainResNet18
     uses: create-model@v1
     with:
-      name: resnet18
+      name: resnet18-epochs-1
       type: Custom
     inputs:
       model:
@@ -34,23 +60,63 @@ jobs:
     with:
       image: nvcr.io/nvidia/pytorch:21.10-py3
       script: |-
-        ls /inputs
-        echo a
-        ls /inputs/model-id
-        echo b
-        echo $(cat /inputs/model-id)
-        echo c
+        cd /inputs/repo/
+        python test_model.py -m /inputs/model/resnet18-epochs-1.pth --id=$(cat /inputs/model-id)
+        cp -R /inputs/repo /outputs
+        cp -R test-results/resnet18-epochs-1.json /outputs/test-results
     needs:
-      - CloneRepo
-      - UploadResNet18
+      - TrainResNet18
     inputs:
+      repo: TrainResNet18.outputs.repo
+      model: TrainResNet18.outputs.model
       model-id: UploadResNet18.outputs.model-id
-      repo: CloneRepo.outputs.repo
+      cifar10-data: 
+        type: dataset
+        with:
+          ref: dsrzkbpudtxoz5q
     outputs:
-      json:
+      test-results:
         type: volume
       repo:
         type: volume
+    resources:
+      instance-type: P5000
+  CompareModels:
+    uses: script@v1
+    with:
+      image: nvcr.io/nvidia/pytorch:21.10-py3
+      script: |-
+        cd /inputs/repo/
+        mkdir /inputs/test-results
+        cp -r /inputs/test-results-a/. /inputs/test-results
+        python print_test_results.py
+        cp -R /inputs/repo /outputs
+    needs:
+      - TestResNet18
+    inputs:
+      repo: TestResNet18.outputs.repo
+      test-results-a: TestResNet18.outputs.test-results
+    outputs:
+      model-id:
+          type: string
+      repo:
+          type: volume
+    resources:
+      instance-type: C4
+  DeployModel:
+    uses: script@v1
+    with:
+      image: nvcr.io/nvidia/pytorch:21.10-py3
+      script: |-
+        cd /inputs/repo/
+        python write_deployment_file.py --id=$(cat /inputs/model-id)
+        pip install gradient -U --force -q
+        gradient deployments update --id 4f788033-d546-4dca-bae5-7d385a57483e --projectId prmniscgk --spec ./deployment.yaml --apiKey 28e6fcc6207a280c16e30f80a87f07                         
+    needs:
+      - CompareModels
+    inputs:
+      model-id: CompareModels.outputs.model-id
+      repo: CompareModels.outputs.repo
     resources:
       instance-type: C4
 context:

@@ -1,29 +1,48 @@
 import os
+import json
 
-results_dir = ['/inputs/test-results-a', '/inputs/test-results-b']
+results_dir = '/inputs/test-results'
 
 accuracy = 0
 # model_path = 'sample_model_path.pth'
 
-model_id_dict = {'resnet18-epochs-1.txt': 'mosq6dg6bz01aww'
-            ,'resnet34-epochs-1.txt': 'movalaty7v0itu'}
+# model_id_dict = {'resnet18-epochs-1.txt': 'mosq6dg6bz01aww'
+#             ,'resnet34-epochs-1.txt': 'movalaty7v0itu'}
 
-model_id = 'sample-model-id'
+# model_id = 'sample-model-id'
+
+
+
+ 
+# Opening JSON file
+# f = open('data.json')
+ 
+# returns JSON object as
+# a dictionary
+# data = json.load(f)
+ 
+# Iterating through the json
+# list
+# for i in data['emp_details']:
+#     print(i)
+ 
+# Closing file
+# f.close()
+
 
 def main():
-    for folder in results_dir:
-        for filename in os.listdir(folder):
-            filepath= os.path.join(folder,filename)
-            if os.path.isfile(filepath):
-                print("Test results for: " + str(filepath))
-                with open(filepath, 'r') as f:
-                    # print(f.read())
-                    results = f.read()
-                    print(results)
-                    temp_accuracy = int(results[-3:-1])
-                    if temp_accuracy > accuracy:
-                        model_id = model_id_dict[filename]
-                print('\n\n')
+    for filename in os.listdir(results_dir):
+        filepath= os.path.join(results_dir,filename)
+        if os.path.isfile(filepath):
+            print("Test results for: " + str(filepath))
+            with open(filepath, 'r') as f:
+                results = json.load(f)
+                # results = f.read()
+                print(results)
+                temp_accuracy = results['accuracy']
+                if temp_accuracy > accuracy:
+                    model_id = results[model_id]
+            print('\n\n')
 
     with open("/outputs/model-id", "w") as o:
         o.write(model_id)
