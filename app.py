@@ -1,28 +1,28 @@
-from flask import Flask, request, render_template, redirect, url_for
-from resnet import resnet18
-from preprocess import imgToTensor
-import torch
+import streamlit as st
+import pandas as pd
 from PIL import Image
+import torch
+from preprocess import imgToTensor
+from resnet import resnet18
+import os
 
 classes = ('plane', 'car', 'bird', 'cat',
-           'deer', 'dog', 'frog', 'horse', 'ship', 'truck')
+        'deer', 'dog', 'frog', 'horse', 'ship', 'truck')
 
-MODEL_PATH = './models/resnet18-epochs-5.pth'
+MODEL_DIR = '/opt/models/'
+for filename in os.listdir(MODEL_DIR):
+    if filename[-4:] == '.pth':
+        filepath = os.path.join(MODEL_DIR,filename)
+MODEL_PATH = filepath
 
-app = Flask(__name__)
+st.title("ResNet + Streamlit Classification Example")
 
-@app.route('/')
-def home_page():
-    return render_template('index.html')
-    
-
-@app.route('/', methods=['POST'])
-def predict_img():
-
-    image = Image.open(request.form['img'])
-
-    filename = 'static/uploads/uploaded_image.png'
-    image.save(filename)
+uploaded_file = st.file_uploader("Choose an image...", type=['png','jpeg'])
+if uploaded_file is not None:
+    image = Image.open(uploaded_file)
+    st.image(image, caption='Uploaded Image.', use_column_width=True)
+    st.write("")
+    st.write("Classifying...")
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model = resnet18(3, 10)
@@ -32,10 +32,6 @@ def predict_img():
     
     output = model(tensor)
     _, predicted = torch.max(output.data, 1)
-    print(predicted)
     prediction = classes[predicted]
 
-    return render_template('result.html', prediction=prediction)
-
-if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port='8000')
+    st.write(prediction)

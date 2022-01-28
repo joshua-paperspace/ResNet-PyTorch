@@ -17,17 +17,11 @@ def main(argv):
     except:
         print("Could not get any passed arguments.")
     for opt, arg in opts:
-        # print('in for loop')
-        # print('opt: '+ str(opt))
-        # print('arg:' + str(arg))
         if opt in ('-l', '--layers'):
-            # print('recognized l')
             if arg == '18':
-                print('resnet18')
                 model_name = 'resnet18'
                 model = resnet18(3, 10)
             elif arg == '34':
-                # print('resnet34')
                 model_name = 'resnet34'
                 model = resnet34(3, 10)
             else:
@@ -37,23 +31,15 @@ def main(argv):
         if opt in ('-e', '--epochs'):
             epochs = int(arg)
 
-    # print(model_name)
-
     criterion = nn.CrossEntropyLoss()
     optimizer = optim.SGD(model.parameters(), lr=0.001, momentum=0.9)
 
-
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-    # print(device)
     model.to(device)
 
-
-    for epoch in range(epochs):  # loop over the dataset multiple times
-
+    for epoch in range(epochs):
         running_loss = 0.0
         for i, data in enumerate(trainloader, 0):
-            # get the inputs; data is a list of [inputs, labels]
-            # inputs, labels = data
             inputs, labels = data[0].to(device), data[1].to(device)
 
             # zero the parameter gradients
@@ -75,17 +61,7 @@ def main(argv):
     print('Finished Training')
 
     PATH = model_dir + model_name + "-epochs-" + str(epochs) + ".pth"
-
-    print(PATH)
-
-    # print('before save')
     torch.save(model.state_dict(), PATH)
-    # print('after save')
-
-    
-
-    
-    # exit(PATH)
 
     return None
 

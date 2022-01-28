@@ -22,7 +22,7 @@ command:
   - |
     cd /opt/repos/repo
     pip install -r requirements.txt
-    streamlit run app2.py
+    streamlit run app.py
 models:
   - id: {id}
     path: /opt/models
