@@ -8,7 +8,7 @@ command:
     pip install -r requirements.txt
     streamlit run app2.py
 models:
-  - id: moh1lf9vrp3yzf
+  - id: def456
     path: /opt/models
 repositories:
   dataset: dsrp37o09pa0h8u
@@ -19,4 +19,4 @@ repositories:
       ref: main
 resources:
   replicas: 1
-  instanceType: P6000
+  instanceType: P5000

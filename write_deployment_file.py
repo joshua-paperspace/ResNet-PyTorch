@@ -14,29 +14,28 @@ def main(argv):
 
 
     deployment_scirpt = '''\
-    image: nvcr.io/nvidia/pytorch:21.10-py3
-    port: 8501
-    command:
-      - /bin/sh
-      - '-c'
-      - |
-        cd /opt/repos/repo
-        pip install -r requirements.txt
-        streamlit run app2.py
-    models:
-      - id: {id}
-        path: /opt/models
-    repositories:
-      dataset: dsrp37o09pa0h8u
-      mountPath: /opt/repos
-      repositories:
-        - url: https://github.com/joshua-paperspace/ResNet-PyTorch
-          name: repo
-          ref: main
-    resources:
-        replicas: 1
-        instanceType: P6000\
-    '''.format(id=model_id)
+image: nvcr.io/nvidia/pytorch:21.10-py3
+port: 8501
+command:
+  - /bin/sh
+  - '-c'
+  - |
+    cd /opt/repos/repo
+    pip install -r requirements.txt
+    streamlit run app2.py
+models:
+  - id: {id}
+    path: /opt/models
+repositories:
+  dataset: dsrp37o09pa0h8u
+  mountPath: /opt/repos
+  repositories:
+    - url: https://github.com/joshua-paperspace/ResNet-PyTorch
+      name: repo
+      ref: main
+resources:
+  replicas: 1
+  instanceType: P5000'''.format(id=model_id)
 
     with open("./deployment.yaml", "w") as o:
         o.write(deployment_scirpt)
