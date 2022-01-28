@@ -17,25 +17,25 @@ def main(argv):
     image: nvcr.io/nvidia/pytorch:21.10-py3
     port: 8501
     command:
-    - /bin/sh
-    - '-c'
-    - |
+      - /bin/sh
+      - '-c'
+      - |
         cd /opt/repos/repo
         pip install -r requirements.txt
         streamlit run app2.py
     models:
-    - id: {id}
+      - id: {id}
         path: /opt/models
     repositories:
-    dataset: dsrp37o09pa0h8u
-    mountPath: /opt/repos
-    repositories:
+      dataset: dsrp37o09pa0h8u
+      mountPath: /opt/repos
+      repositories:
         - url: https://github.com/joshua-paperspace/ResNet-PyTorch
-        name: repo
-        ref: main
+          name: repo
+          ref: main
     resources:
-    replicas: 1
-    instanceType: P6000\
+        replicas: 1
+        instanceType: P6000\
     '''.format(id=model_id)
 
     with open("./deployment.yaml", "w") as o:
