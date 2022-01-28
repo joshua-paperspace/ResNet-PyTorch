@@ -38,6 +38,8 @@ jobs:
         echo a
         ls /inputs/model-id
         echo b
+        echo $(cat /inputs/model-id)
+        echo c
     needs:
       - CloneRepo
       - UploadResNet18
