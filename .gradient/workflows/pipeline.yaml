@@ -66,6 +66,7 @@ jobs:
         cp -R test-results/resnet18-epochs-1.json /outputs/test-results
     needs:
       - TrainResNet18
+      - UploadResNet18
     inputs:
       repo: TrainResNet18.outputs.repo
       model: TrainResNet18.outputs.model
