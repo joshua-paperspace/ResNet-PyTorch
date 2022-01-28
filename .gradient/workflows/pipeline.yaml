@@ -12,23 +12,21 @@ jobs:
         type: volume
     resources:
       instance-type: C4
-  TrainResNet18:
-    uses: script@v1
-    with:
-      image: nvcr.io/nvidia/pytorch:21.10-py3
-      script: |-
-        cd /inputs/repo/
-        cp -R /inputs/repo/ /outputs
-        cp -R ./hello.json /outputs/json
+  UploadResNet18:
     needs:
       - CloneRepo
+    uses: create-model@v1
+    with:
+      name: resnet18
+      type: Custom
     inputs:
-      repo: CloneRepo.outputs.repo
+      model:
+        type: dataset
+        with:
+          ref: dsrsgtp083suuyu
     outputs:
-      json:
-        type: volume
-      repo:
-        type: volume
+      model-id:
+        type: string
     resources:
       instance-type: C4
   TestResNet18:
@@ -38,14 +36,19 @@ jobs:
       script: |-
         ls /inputs
         echo a
-        ls /inputs/json
+        ls /inputs/model-id
         echo b
-        ls /inputs/repo
     needs:
-      - TrainResNet18
+      - CloneRepo
+      - UploadResNet18
     inputs:
-      repo: TrainResNet18.outputs.repo
-      json: TrainResNet18.outputs.json
+      model-id: UploadResNet18.outputs.model-id
+      repo: CloneRepo.outputs.repo
+    outputs:
+      json:
+        type: volume
+      repo:
+        type: volume
     resources:
       instance-type: C4
 context:
