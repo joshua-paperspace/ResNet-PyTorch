@@ -41,7 +41,7 @@ def main():
                 print(results)
                 temp_accuracy = results['accuracy']
                 if temp_accuracy > accuracy:
-                    model_id = results[model_id]
+                    model_id = results['model_id']
             print('\n\n')
 
     with open("/outputs/model-id", "w") as o:

@@ -20,7 +20,7 @@ jobs:
         cd /inputs/repo/
         python train_model.py --layers=18 --epochs=1
         cp -R /inputs/repo /outputs
-        cp -R model /outputs
+        cp -R model/resnet18-epochs-1.pth /outputs/model
     needs:
       - CloneRepo
     inputs:
