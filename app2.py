@@ -5,7 +5,6 @@ import torch
 from preprocess import imgToTensor
 from resnet import resnet18
 import os
-import sys, getopt
 
 
 classes = ('plane', 'car', 'bird', 'cat',
