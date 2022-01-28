@@ -37,7 +37,7 @@ jobs:
       repo:
         type: volume
     resources:
-      instance-type: P5000
+      instance-type: A100
   UploadResNet18:
     needs:
       - TrainResNet18
@@ -81,7 +81,7 @@ jobs:
       repo:
         type: volume
     resources:
-      instance-type: P5000
+      instance-type: A100
   CompareModels:
     uses: script@v1
     with:
