@@ -15,7 +15,7 @@ for filename in os.listdir(MODEL_DIR):
         filepath = os.path.join(MODEL_DIR,filename)
 MODEL_PATH = filepath
 
-st.title("ResNet + Streamlit Classification Example")
+st.title("ResNet + Streamlit Classification")
 
 uploaded_file = st.file_uploader("Choose an image...", type=['png','jpeg'])
 if uploaded_file is not None:
