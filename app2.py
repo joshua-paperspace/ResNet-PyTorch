@@ -13,8 +13,8 @@ classes = ('plane', 'car', 'bird', 'cat',
 
 MODEL_DIR = '/opt/models/'
 for filename in os.listdir(MODEL_DIR):
-    if filename[:-4] == '.pth':
-        filepath= os.path.join(MODEL_DIR,filename)
+    sys.stdout.write(filename)
+    filepath = os.path.join(MODEL_DIR,filename)
 MODEL_PATH = filepath
 
 ### Excluding Imports ###
