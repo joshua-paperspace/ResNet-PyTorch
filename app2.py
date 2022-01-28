@@ -5,12 +5,13 @@ import torch
 from preprocess import imgToTensor
 from resnet import resnet18
 import os
+import sys, getopt
+
 
 classes = ('plane', 'car', 'bird', 'cat',
-           'deer', 'dog', 'frog', 'horse', 'ship', 'truck')
+        'deer', 'dog', 'frog', 'horse', 'ship', 'truck')
 
-MODEL_DIR = '/opt/models/resnet18-epochs-5.pth'
-
+MODEL_DIR = '/opt/models/'
 for filename in os.listdir(MODEL_DIR):
     if filename[:-4] == '.pth':
         filepath= os.path.join(MODEL_DIR,filename)

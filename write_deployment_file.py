@@ -3,7 +3,7 @@ import sys, getopt
 def main(argv):
 
     try:
-        opts, args = getopt.getopt(argv,"i:",["id=", "epochs="])
+        opts, args = getopt.getopt(argv,"i:",["id="])
     except:
         print("Could not get any passed arguments.")
     for opt, arg in opts:
