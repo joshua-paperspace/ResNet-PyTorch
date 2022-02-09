@@ -144,7 +144,7 @@ def main(argv):
 
     print('Finished Training')
 
-    PATH = model_dir + name + ".pth"
+    PATH = model_dir + name.lower() + ".pth"
     torch.save(model.state_dict(), PATH)
 
     return None
