@@ -141,7 +141,13 @@ def main(argv):
         avg_epoch_runtime = sum(epoch_durations) / len(epoch_durations)
         wandb.log({"avg epoch runtime (seconds)": avg_epoch_runtime})
         # wandb.finish()
+
     print('Finished Training')
+
+    PATH = model_dir + name + ".pth"
+    torch.save(model.state_dict(), PATH)
+
+    return None
 
 if __name__ == "__main__":
    main(sys.argv[1:])

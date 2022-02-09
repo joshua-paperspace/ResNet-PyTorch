@@ -1,5 +1,5 @@
-data_dir = 'data'
-# data_dir = '/inputs/cifar10'
+# data_dir = 'data'
+data_dir = '/inputs/cifar10'
 
 model_config={
             "epochs": 10,
