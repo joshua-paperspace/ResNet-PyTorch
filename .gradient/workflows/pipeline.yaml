@@ -21,7 +21,7 @@ jobs:
         pip install wandb -qqq
         python train_model_wandb.py --layers=18 --epochs=10
         cp -R /inputs/repo /outputs
-        cp -R model/resnet18-epochs-1.pth /outputs/model
+        cp -R model/resnet18-epochs-10.pth /outputs/model
     needs:
       - CloneRepo
     inputs:
@@ -44,7 +44,7 @@ jobs:
       - TrainResNet18
     uses: create-model@v1
     with:
-      name: resnet18-epochs-1
+      name: resnet18-epochs-10
       type: Custom
     inputs:
       model:
@@ -62,9 +62,9 @@ jobs:
       image: nvcr.io/nvidia/pytorch:21.10-py3
       script: |-
         cd /inputs/repo/
-        python test_model.py -m /inputs/model/resnet18-epochs-1.pth --id=$(cat /inputs/model-id)
+        python test_model.py -m /inputs/model/resnet18-epochs-10.pth --id=$(cat /inputs/model-id)
         cp -R /inputs/repo /outputs
-        cp -R test-results/resnet18-epochs-1.json /outputs/test-results
+        cp -R test-results/resnet18-epochs-10.json /outputs/test-results
     needs:
       - TrainResNet18
       - UploadResNet18
@@ -92,7 +92,7 @@ jobs:
         pip install wandb -qqq
         python train_model_wandb.py --layers=34 --epochs=10
         cp -R /inputs/repo /outputs
-        cp -R model/resnet34-epochs-1.pth /outputs/model
+        cp -R model/resnet34-epochs-10.pth /outputs/model
     needs:
       - CloneRepo
     inputs:
@@ -115,7 +115,7 @@ jobs:
       - TrainResNet34
     uses: create-model@v1
     with:
-      name: resnet34-epochs-1
+      name: resnet34-epochs-10
       type: Custom
     inputs:
       model:
@@ -133,9 +133,9 @@ jobs:
       image: nvcr.io/nvidia/pytorch:21.10-py3
       script: |-
         cd /inputs/repo/
-        python test_model.py -m /inputs/model/resnet34-epochs-1.pth --id=$(cat /inputs/model-id)
+        python test_model.py -m /inputs/model/resnet34-epochs-10.pth --id=$(cat /inputs/model-id)
         cp -R /inputs/repo /outputs
-        cp -R test-results/resnet34-epochs-1.json /outputs/test-results
+        cp -R test-results/resnet34-epochs-10.json /outputs/test-results
     needs:
       - TrainResNet34
       - UploadResNet34
