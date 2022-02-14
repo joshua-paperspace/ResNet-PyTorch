@@ -187,7 +187,7 @@ jobs:
         cd /inputs/repo/
         python write_deployment_file.py --id=$(cat /inputs/model-id)
         pip install gradient -U --force -q
-        gradient deployments update --id 48754ab1-43b0-4c42-a2a8-8055849bbf73 --projectId prwo4urjq --spec ./deployment.yaml --apiKey gradient deployments update --id 48754ab1-43b0-4c42-a2a8-8055849bbf73 --projectId prwo4urjq --spec ./deployment.yaml --apiKey 1fb1293c3fd4d69b96d522dbdeadad                         
+        gradient deployments update --id 48754ab1-43b0-4c42-a2a8-8055849bbf73 --projectId prwo4urjq --spec ./deployment.yaml --apiKey 1fb1293c3fd4d69b96d522dbdeadad                         
     needs:
       - CompareModels
     inputs:
