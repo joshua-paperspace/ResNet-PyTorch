@@ -1,10 +1,10 @@
+defaults:
+  env:
+    api-key: secret:git_repo_pat
 'on':
   github:
     branches:
       only: main
-defaults:
-  env:
-    api-key: secret:git_repo_pat
 jobs:
   TestSecret:
     uses: script@v1
