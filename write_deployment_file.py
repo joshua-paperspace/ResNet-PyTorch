@@ -35,7 +35,7 @@ repositories:
       ref: main
 resources:
   replicas: 1
-  instanceType: P5000'''.format(id=model_id)
+  instanceType: C4'''.format(id=model_id)
 
     with open("./deployment.yaml", "w") as o:
         o.write(deployment_scirpt)

@@ -8,10 +8,10 @@ command:
     pip install -r requirements.txt
     streamlit run app.py
 models:
-  - id: def456
+  - id: mo6l0m1nq4zqrp
     path: /opt/models
 repositories:
-  dataset: dsrp37o09pa0h8u
+  dataset: dsrlgg3oltvxz7d
   mountPath: /opt/repos
   repositories:
     - url: https://github.com/joshua-paperspace/ResNet-PyTorch
@@ -19,4 +19,4 @@ repositories:
       ref: main
 resources:
   replicas: 1
-  instanceType: P5000
+  instanceType: C4
