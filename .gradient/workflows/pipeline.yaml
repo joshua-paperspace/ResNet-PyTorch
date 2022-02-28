@@ -48,7 +48,7 @@ jobs:
       - TrainResNet18
     uses: create-model@v1
     with:
-      name: resnet18-epochs-10
+      name: resnet18-epochs-10-a
       type: Custom
     inputs:
       model:
@@ -119,7 +119,7 @@ jobs:
       - TrainResNet34
     uses: create-model@v1
     with:
-      name: resnet34-epochs-10
+      name: resnet34-epochs-10-a
       type: Custom
     inputs:
       model:
