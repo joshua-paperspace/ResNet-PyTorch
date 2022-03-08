@@ -11,7 +11,7 @@ models:
   - id: mo6l0m1nq4zqrp
     path: /opt/models
 repositories:
-  dataset: dsrlgg3oltvxz7d
+  dataset: dshxxif865nmrg4
   mountPath: /opt/repos
   repositories:
     - url: https://github.com/joshua-paperspace/ResNet-PyTorch
