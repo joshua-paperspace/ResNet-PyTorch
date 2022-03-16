@@ -1,6 +1,6 @@
 defaults:
   env:
-    API_KEY: secret:jr_git_pat
+    API_KEY: secret:jr_gradient_api_key
     batches: "10"
 'on':
   github:
