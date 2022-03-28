@@ -1,3 +1,1 @@
 # ResNet-PyTorch
-
-
